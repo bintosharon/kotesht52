@@ -1,0 +1,14 @@
+Installation steps
+
+
+
+sudo wget https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-8.5.7-x64.bin
+sudo chmod a+x atlassian-jira-core-8.5.7-x64.bin
+sudo ./atlassian-jira-core-8.5.7-x64.bin
+sudo /etc/init.d/jira start
+
+
+Once the installation is complete, access Jira instance on 8080 port using the below link.
+
+
+http://server-IP:8080
