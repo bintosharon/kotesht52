@@ -1,0 +1,77 @@
+git status
+git add .
+git rebase
+git mv old_name new_name
+git clone
+git commit -m "The message u need to make for urself"
+git branch
+git checkout
+
+
+vi script.sh
+vi gsk.txt
+i for insert
+esc for moving out of writing and then
+:wq ---> save and exit the virtual editor
+
+
+NAME = SHIVA
+echo "Hello $NAME. The current date and time is $(date)."
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+gitcmds.txt [unix] (05:29 01/01/1970)                                                                                                                                                                    0,0-1 All
+"gitcmds.txt" [New]
+
