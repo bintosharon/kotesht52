@@ -1,0 +1,38 @@
+Create a Virtual Machine with the following configurations,
+
+Region: (US) East US
+Availability options: No infrastructure redundancy required
+Security type: Standard
+Image: Ubuntu Server 20.04 LTS - Gen2
+Size: Standard_B2ms
+Authentication type: SSH public key
+SSH public key source: Generate new key pair
+OS disk type: Standard HDD
+Inbound rule: Allow HTTP and 8080 Port
+Install Jenkins on VM
+Run Jenkins on 8080 Port
+Ensure that you can able to access the default Jenkins landing page from the local machine web browser.
+
+
+
+
+
+
+
+
+
+
+Problem statement contd.
+
+Execute the following job in Jenkins running on the created Virtual Machine:
+
+Login to Jenkins with username as admin and fetch password from the path $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Install suggested plugins and Continue as admin user.
+Create a job named JavaDemo in Jenkins.
+Configure the source code of your job with Repository URL https://code.fresco.me/play-content/handson-frescoplaylab-javademo.git
+Git Username: handson_user
+Git Password: jQdQysBiuhe4NjnoFw98
+Branch Specifier: */main
+There is a file with the name JavaDemo.java in the above repo.
+In the Add build step, select Execute shell and write code in it to compile the java file.
+Apply the changes and build your job. Once done, check your result in the console output of your build.
