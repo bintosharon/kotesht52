@@ -4,3 +4,40 @@ sudo service docker restart
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
 rm -rf minikube_latest_amd64.deb
+
+
+
+In this hands on you are going to start your kubernetes journey by getting your hands dirty with few basics
+
+Environment Setup
+
+Check whether docker & minikube are properly installed and configured.
+
+Start Minikube and execute this command to sync host docker with minikube docker minikube -p minikube docker-env and eval $(minikube docker-env)
+Step - 1
+
+Create a pod object using kubectl run command with google's sample image: gcr.io/google-samples/kubernetes-bootcamp:v1 and expose it on port 8080, name the pod as firstapp.
+
+Check if the pod creation is successful by running the command: kubectl get pod firstapp
+
+Step - 2
+
+Expose the application to the local VM by creating a Service object of type NodePort.
+
+Check if the service is created by running the command: kubectl get svc firstapp
+
+Step - 3
+
+Create another deployment using a 'YAML' file, create a deployment.yaml file that contains information of the number of replicas and the images to be used. Use an nginx image to deploy. Name the deployment as 'nginx'
+
+Check if the deployment is created by running the command: kubectl get deployment nginx
+
+Step - 4
+
+Create a NodePort type service using a 'YAML' file, create a service.yaml file that contains information of the type of service and the port numbers. Name the Service nginx-svc and use port 30080 for nodePort.
+
+Check if the service is created by running the command: kubectl get svc nginx-svc
+
+Step - 5
+
+Use kubectl exec command to get inside the running nginx pod and write the string 'Welcome to fresco nginx pod' to /usr/share/nginx/html/index.html file
