@@ -1,0 +1,79 @@
+print("Hello,world")
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>MavenWar</groupId>
+    <artifactId>MavenWar</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <build>
+      <plugins>
+      <plugin>
+         <artifactId>maven-war-plugin</artifactId>
+         <version>2.6</version>
+         <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+         </configuration>
+         
+      </plugin>
+      </plugins>
+
+    </build>
+</project>
+
+
+
+####DEVOPS#####
+1. Tryouts - DevOps Deployment Pipeline using Jenkins
+General Instructions
+1. Attempt the test only if your network is stable. Avoid using mobile internet.
+
+2. After launching Jenkins, if you find errors like 'Bad Gateway' or 'no valid crumb was included in the request' kindly refresh the environment and try again with the stable internet connectivity
+
+3.  Select Project -> Run to start the tomcat server
+
+4.  Run Jenkins on tomcat 
+
+Hint: Click on web preview link to launch tomcat and append /jenkins to the tomcat URL to run Jenkins on tomcat server
+
+5. Select Run Tests to check your result     
+
+6. The scenario is to build a pipeline in Jenkins with 2 different jobs as described below and create a Build pipeline to trigger the jobs automatically
+
+ 
+
+Getting Started
+1. Login to jenkins getting the admin password with the command,
+
+         $ cat /var/lib/jenkins/secrets/initialAdminPassword
+
+2. Create a job named PackageJob in Jenkins
+
+3. Configure the job to:
+
+        - Fetch the source code from Git Repository https://code.fresco.me/play-content/github-frescoplaylab-jenkinswar.git
+
+           Git username: handson_user
+           Git password: glpat-7B41mSkUdsDJAUDMxibs
+
+        - Build the job to clean, compile and package using maven to generate a war file.
+
+        - Post-Build DeployJob
+
+4.  Create another job named DeployJob in Jenkins
+
+5. Configure the job to:
+
+        - Build the job only if PackageJob is success
+        - Post-Build, deploy the generated war file from PackageJob on tomcat container.
+
+          (Note 1: copy the required war file from PackageJob workspace in DeployJob)
+          (Note 2: Username : admin and Password : admin to login to tomcat and use version Tomcat 8.x)
+
+          (Note 3: Install necessary plugins to achieve all these tasks)
+
+6. Now, create a Build Pipeline named PipelineDemo with the initial job as PackageJob
+
+7. Once your build is success, open a tomcat URL in a new tab, click on 'Manager App' and enter admin as both Username and Password. Now, from the available deployments, find and open your deployed war file and thereby you should see a message Welcome!!You have successfully deployed war file on tomcat!! 
