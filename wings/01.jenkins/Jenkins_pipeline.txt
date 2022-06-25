@@ -1,0 +1,109 @@
+sudo usermod -a -g docker jenkins
+grep docker /etc/group
+
+
+##SIMPLE PIPELINE###
+
+pipeline
+{
+    agent any
+        stages{
+            stage('Build'){
+               steps{
+                echo 'This is build step'
+               }
+            }
+            stage('Test'){
+               steps{
+                echo 'This is Test step'
+               }
+            }
+            stage('Deploy'){
+               steps{
+                echo 'This is Deploy step'
+               }
+            }
+        }
+}
+
+
+###MULTISTEPS PIPELINE#####
+
+pipeline
+{
+    agent any
+        stages{
+            stage('Build'){
+               steps{
+               sh 'echo This is build step'
+               
+               sh '''
+               
+                  echo 'multi steps linux command'
+                  ls -la
+                  
+                  '''
+               }
+            }
+        }
+}
+
+
+
+###ENVIRONMENT VARIABLES PIPELINE#######
+
+pipeline{
+    agent any
+        environment{
+            MYN="Akurathi"
+            LN="Sai Praveen"
+        }
+        stages{
+            stage('Test'){
+                steps{
+                
+                sh 'echo $LN $MYN' 
+                }
+            }
+        }
+    
+}
+
+
+#####RETRY PIPELINE#####
+
+pipeline
+{
+    agent any
+        stages{
+            stage('Build'){
+               steps{
+                 retry(3){
+                  sh 'This step will not work as there is no linux command in shell : so retrying'
+                 }
+                
+               }
+            }
+        }
+}
+
+
+#### TIMEOUT PIPELINE ########
+
+pipeline{
+    agent any
+    stages{
+        stage('My stage'){
+            steps{
+                retry(3){
+                    sh 'echo 3 times'
+                }
+                
+                timeout(time :3,unit: 'SECONDS'){
+                    sh 'sleep 15'
+                }
+            }
+            
+        }
+    }
+}
